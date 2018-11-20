@@ -1,0 +1,20 @@
+<launch>
+
+    <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
+    </include>
+
+    <node
+        pkg="walker_turtlebot"
+        name="walker"
+        type="walker"
+        output="screen"
+        launch-prefix="gnome-terminal --command"
+    />
+     <node
+        pkg="rosbag"
+        name="recorder_bag"
+        type="record" 
+        args="--duration=30 --all --output-name=$(find walker_turtlebot)/results/ walker_turtlebot.bag -x /camera/(.*)" 
+    />
+
+</launch>
