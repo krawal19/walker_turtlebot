@@ -13,7 +13,7 @@ Reference for image: <a href='http://www.ros.org/'>link</a>
 </p>
 
 ## Project Overview
-This project implements a object avoidance behavior using the motion base platform which is type of turtlebot. The turtlebot moves linearly and when it encounters a object it turns away to avoid the obstacle. The turtlebot also avoids the obstacles which are place in front of it while simulation is running. The rosbag file is generated in results directory, it can be played to see recoded published topics.
+This project implements a object avoidance behavior using the motion base platform which is type of turtlebot, with simulation on gazebo. The turtlebot moves linearly and when it encounters a object it turns away to avoid the obstacle. The turtlebot also avoids the obstacles which are place in front of it while simulation is running. The rosbag file is generated in results directory, it can be played to see recoded published topics.
 
 ## Dependencies
 
@@ -30,7 +30,7 @@ $ sudo apt-get install ros-kinetic-turtlebot-gazebo ros-kinetic-turtlebot-apps r
 ```
 ## Build Instructions
 #### Build Catkin Workspace
-Open terminal and run the following command to clone this repository in it
+Open terminal and run the following command to clone this repository in it. The below command will start turtlebot gazebo simulation and walker node.
 ```
 $ git clone https://github.com/krawal19/walker_turtlebot.git catkin_ws/src/walker_turtlebot
 $ cd catkin_ws

@@ -76,16 +76,15 @@ class Walker {
  public:
   /// Constructor for Walker
   Walker();
-  
+
   /// Destructor of walker
   ~Walker();
 
   /// Running the robot
   void runTurtleBot();
-  
+
   /// Callback function for Walker
   void laserCall(const sensor_msgs::LaserScan::ConstPtr& msg);
-
 };
 
 #endif  // INCLUDE_WALKER_HPP_

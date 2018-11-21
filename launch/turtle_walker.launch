@@ -1,4 +1,5 @@
 <launch>
+    <arg name="record" default="True"/>
 
     <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
     </include>
@@ -14,7 +15,8 @@
         pkg="rosbag"
         name="recorder_bag"
         type="record" 
-        args="--duration=30 --all --output-name=$(find walker_turtlebot)/results/ walker_turtlebot.bag -x /camera/(.*)" 
+        args="--duration=30 --all --output-name=$(find walker_turtlebot)/results/turtlebot_walker.bag -x /camera/(.*)"
+        if="$(arg record)" 
     />
 
 </launch>

@@ -73,10 +73,9 @@ Walker::Walker() {
  *
  */
 Walker::~Walker() {
-  /// stopping the bot
+  /// stopping the turtlebot
   velocityPublish.publish(msg);
 }
-
 /**
  * 
  * @brief   Callback from laser scan
@@ -86,15 +85,13 @@ Walker::~Walker() {
  */
 void Walker::laserCall(const sensor_msgs::LaserScan::ConstPtr& msg) {
   for (int i = 0; i < msg->ranges.size(); ++i) {
-    if (msg->ranges[i] < 0.5) {
+    if (msg->ranges[i] < 0.7) {
       collision = true;
       return;
     }
   }
   collision = false;
 }
-
-
 /**
  *
  * @brief   Running the Robot
@@ -104,8 +101,8 @@ void Walker::runTurtleBot() {
   /// Rate of loop running
   ros::Rate loop_rate(10);
   /// Keep running till ros is running ok
-  while (ros::ok()) { 
-   /// Finding the obstacle
+  while (ros::ok()) {
+  /// Finding the obstacle
     if (collision) {
       /// Obstacle detected
       ROS_INFO("obstacle detected , Turning away");
@@ -114,17 +111,15 @@ void Walker::runTurtleBot() {
       msg.linear.x = 0.0;
 
       /// Rotating the robot
-      msg.angular.z = 0.5;
+      msg.angular.z = 0.3;
     } else {
-      
       /// Stop Rotating
       msg.angular.z = 0.0;
 
       /// Set forward speed of the Turtle robot
-      msg.linear.x = 0.5;
+      msg.linear.x = 0.2;
 
       ROS_INFO("NO obstacle, Moving ahead");
-
      }
 
     /// Publish the twist message as broadcast
